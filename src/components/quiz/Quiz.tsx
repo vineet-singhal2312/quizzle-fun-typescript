@@ -1,20 +1,14 @@
 import "./Quiz.css";
 import { QuestionCard } from "../questioncard/QuestionCard";
-import { quizObj } from "../data/quizObj";
-import React, { useEffect, useReducer, useState } from "react";
+import { useEffect, useState } from "react";
 import { makeStyles, Theme } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
-import Typography from "@material-ui/core/Typography";
-import Box from "@material-ui/core/Box";
-import { type } from "os";
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import { createStyles } from "@material-ui/core/styles";
-import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import axios from "axios";
 import { intState, useQuiz } from "../providers/QuizContextProvider";
+import { ScoreCard } from "../scorecard/ScoreCard";
+import { useParams } from "react-router";
+import { Header } from "../header/Header";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,26 +18,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-// const initialState = {
-//   score: 0,
-// };
-
-// type ACTIONTYPE = { type: "increment" } | { type: "decrement" };
-
-// const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
-//   switch (action.type) {
-//     case "increment":
-//       return { ...state, score: state.score + 1 };
-
-//     case "decrement":
-//       return { ...state, score: state.score - 1 };
-
-//     default:
-//       throw new Error();
-//   }
-// };
-
 export function Quiz() {
+  const { quizName } = useParams();
+  // console.log(quizName);
+
   const {
     state,
     dispatch,
@@ -67,15 +45,11 @@ export function Quiz() {
 
   type Questions = question[];
 
-  const [showNextBtn, setShowNextBtn] = useState(false);
-  const [quetionNumber, setQuestionNumber] = useState(0);
-  const [questions, setQuestions] = useState<Questions>([]);
-
   useEffect(() => {
     (async function () {
       try {
-        const res = await axios.get<Questions>("/cliquiz");
-        // console.log(res.data);
+        const res = await axios.get<Questions>(`/${quizName}`);
+        // console.log(res);
 
         const data = res.data.map((qus) => ({
           ...qus,
@@ -83,99 +57,78 @@ export function Quiz() {
             .concat(qus.wrongOption)
             .sort(() => Math.random() - 0.5),
         }));
-        console.log(data);
-        setQuestions(res.data);
         dispatch({ type: "initialize-data", data: data });
-
-        // console.log(state.data);
       } catch (error) {
         console.log(error, "error");
       }
     })();
   }, []);
 
-  function answerHandler({
-    option,
-    negativePoint,
-    plusPoint,
-  }: {
-    option: string | undefined;
-    negativePoint: number;
-    plusPoint: number;
-  }) {
-    // console.log(option);
-    // const { state, dispatch } = useQuiz();
-    // const rytAns = state.data[state.questionNum]?.rightOption;
-
-    if (option === state.data[quetionNumber]?.rightOption) {
-      console.log("yeahhh");
-      dispatch({ type: "increment", negativePoint, plusPoint });
-    } else {
-      dispatch({ type: "decrement", negativePoint, plusPoint });
-    }
-    setShowNextBtn(true);
-  }
-
-  console.log(state.data);
-
-  const rytAns = state.data[quetionNumber]?.rightOption;
-
-  const wrngAns = state.data[quetionNumber]?.wrongOption;
-  const arr = [rytAns].concat(wrngAns).sort(() => Math.random() - 0.5);
-
-  const [clickedRight, setClickedRight] = useState("");
-  const [clickedWrong, setClickedWrong] = useState("");
-
-  console.log(state.data[0]?.options);
-
   return (
     <div className="quiz">
-      <h1>SCORE : {state.score}</h1>
+      <Header heading="LET'S PLAY" />
 
-      <div className="question-card">
-        <h3 className="question">{state.data[quetionNumber]?.question}</h3>
-
-        <ol className="options">
-          {state.data[quetionNumber]?.options.map((option: any) => (
-            <li
-              key={option}
-              className={
-                option === state.data[quetionNumber]?.rightOption
-                  ? `option ${clickedRight}`
-                  : `option ${clickedWrong}`
-              }
-              onClick={() => {
-                answerHandler({
-                  option: option,
-                  plusPoint: state.data[quetionNumber]?.plusPoint,
-                  negativePoint: state.data[quetionNumber]?.negativePoint,
-                });
-                setClickedRight("right");
-
-                setClickedWrong("wrong");
-              }}
-            >
-              {option}
-            </li>
-          ))}
-        </ol>
+      {/* <h1>SCORE : {state.score}</h1> */}
+      <div className="question-card-div">
+        {state.questionNum < 10 ? <QuestionCard /> : <ScoreCard />}
       </div>
 
-      {showNextBtn && (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            setQuestionNumber(quetionNumber + 1);
-            setShowNextBtn(false);
-            setClickedRight("");
+      <div className="next-btn-div">
+        {state.isNxtBtn &&
+          (state.questionNum < 9 ? (
+            <Button
+              id="button"
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                dispatch({
+                  type: "increase-qus-number",
+                });
 
-            setClickedWrong("");
-          }}
-        >
-          Next
-        </Button>
-      )}
+                dispatch({
+                  type: "next-button",
+                  payload: false,
+                });
+                dispatch({
+                  type: "clicked-right",
+                  payload: "",
+                });
+                dispatch({
+                  type: "clicked-wrong",
+                  payload: "",
+                });
+              }}
+            >
+              Next
+            </Button>
+          ) : (
+            <Button
+              id="button"
+              variant="contained"
+              color="primary"
+              onClick={() => {
+                dispatch({
+                  type: "increase-qus-number",
+                });
+
+                dispatch({
+                  type: "next-button",
+                  payload: false,
+                });
+                dispatch({
+                  type: "clicked-right",
+                  payload: "",
+                });
+                dispatch({
+                  type: "clicked-wrong",
+                  payload: "",
+                });
+              }}
+            >
+              Done
+            </Button>
+          ))}
+      </div>
     </div>
   );
 }

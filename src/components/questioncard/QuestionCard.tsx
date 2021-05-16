@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useQuiz } from "../providers/QuizContextProvider";
 import "./QuestionCard.css";
 
@@ -12,45 +11,69 @@ type propType = {
   options: option[];
 };
 
-export const QuestionCard = ({ question, options }: propType) => {
-  const [clickedRight, setClickedRight] = useState("");
-  const [clickedWrong, setClickedWrong] = useState("");
+export const QuestionCard = () => {
+  const { state, dispatch } = useQuiz();
 
-  const { state } = useQuiz();
-
-  const rytAns = state.data[state.questionNum]?.rightOption;
-
-  console.log(state.data[state.questionNum]?.wrongOption);
-  const wrngAns = state.data[state.questionNum]?.wrongOption;
-  const arr = [rytAns].concat(wrngAns).sort(() => Math.random() - 0.5);
+  function answerHandler({
+    option,
+    negativePoint,
+    plusPoint,
+  }: {
+    option: string | undefined;
+    negativePoint: number;
+    plusPoint: number;
+  }) {
+    if (option === state.data[state.questionNum]?.rightOption) {
+      // console.log("yeahhh");
+      dispatch({ type: "increment", negativePoint, plusPoint });
+    } else {
+      dispatch({ type: "decrement", negativePoint, plusPoint });
+    }
+    dispatch({
+      type: "next-button",
+      payload: true,
+    });
+  }
+  // console.log(state.data[state.questionNum]?.question);
+  // console.log(state.data[state.questionNum]?.options);
 
   return (
     <div className="question-card">
       <h3 className="question">{state.data[state.questionNum]?.question}</h3>
 
       <ol className="options">
-        {arr.map((option) => (
-          <li
-            key={option}
-            className={
-              option === rytAns
-                ? `option ${clickedRight}`
-                : `option ${clickedWrong}`
-            }
-            onClick={() => {
-              // answerHandler({
-              //   option: option,
-              //   plusPoint: state.data[state.questionNum]?.plusPoint,
-              //   negativePoint: state.data[state.questionNum]?.negativePoint,
-              // });
-              setClickedRight("right");
+        {state.data[state.questionNum]?.options.map((option: any) => {
+          // console.log(option);
 
-              setClickedWrong("wrong");
-            }}
-          >
-            {option}
-          </li>
-        ))}
+          return (
+            <li
+              key={option}
+              className={
+                option === state.data[state.questionNum]?.rightOption
+                  ? `option ${state.clickedRight}`
+                  : `option ${state.clickedWrong}`
+              }
+              onClick={() => {
+                answerHandler({
+                  option: option,
+                  plusPoint: state.data[state.questionNum]?.plusPoint,
+                  negativePoint: state.data[state.questionNum]?.negativePoint,
+                });
+
+                dispatch({
+                  type: "clicked-right",
+                  payload: "right",
+                });
+                dispatch({
+                  type: "clicked-wrong",
+                  payload: "wrong",
+                });
+              }}
+            >
+              {option}
+            </li>
+          );
+        })}
       </ol>
     </div>
   );

@@ -5,8 +5,7 @@ import { Link } from "react-router-dom";
 
 const images = [
   {
-    url:
-      "https://image.shutterstock.com/image-vector/welcome-letters-banner-on-blue-260nw-1189574716.jpg",
+    url: "https://image.shutterstock.com/image-vector/welcome-letters-banner-on-blue-260nw-1189574716.jpg",
     title: "Start",
     width: "40%",
     height: "300px",
@@ -96,7 +95,7 @@ export default function Login() {
   const classes = useStyles();
 
   return (
-    <Link to="/quiz" className={classes.root}>
+    <Link to="/quizzes" className={classes.root}>
       {images.map((image) => (
         <ButtonBase
           focusRipple

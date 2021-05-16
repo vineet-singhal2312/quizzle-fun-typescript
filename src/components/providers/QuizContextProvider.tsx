@@ -6,6 +6,8 @@ export type intState = {
   data: any;
   questionNum: number;
   isNxtBtn: boolean;
+  clickedRight: string;
+  clickedWrong: string;
 };
 
 const initialState: intState = {
@@ -13,6 +15,8 @@ const initialState: intState = {
   data: [],
   questionNum: 0,
   isNxtBtn: false,
+  clickedRight: "",
+  clickedWrong: "",
 };
 
 type question = {
@@ -35,7 +39,9 @@ type ACTIONTYPE =
   | { type: "decrement"; negativePoint: number; plusPoint: number }
   | { type: "initialize-data"; data: Questions }
   | { type: "increase-qus-number" }
-  | { type: "next-button" };
+  | { type: "next-button"; payload: boolean }
+  | { type: "clicked-right"; payload: string }
+  | { type: "clicked-wrong"; payload: string };
 
 const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
   switch (action.type) {
@@ -48,7 +54,15 @@ const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
     case "initialize-data":
       return { ...state, data: action.data };
     case "next-button":
-      return { ...state, isNxtBtn: true };
+      return { ...state, isNxtBtn: action.payload };
+
+    case "increase-qus-number":
+      return { ...state, questionNum: state.questionNum + 1 };
+    case "clicked-right":
+      return { ...state, clickedRight: action.payload };
+
+    case "clicked-wrong":
+      return { ...state, clickedWrong: action.payload };
     default:
       throw new Error();
   }

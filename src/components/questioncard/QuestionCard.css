@@ -1,3 +1,10 @@
+:root {
+  --primaryColor: #1abc9c;
+
+  --secondaryColor: #ecf0f1;
+  --textColor: grey;
+}
+
 .question-card {
   width: 700px;
   height: 500px;
@@ -8,6 +15,14 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
+  background-color: var(--secondaryColor);
+  font-size: 1.1rem;
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .question {
   width: 80%;
@@ -31,18 +46,25 @@
   border: 1px solid gray;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
 }
-/* .option:hover {
-  background: rgba(36, 135, 216, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(1px);
-  -webkit-backdrop-filter: blur(1px);
+
+.right {
+  color: var(--textColor);
+  background: rgba(104, 185, 16, 0.5);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
-} */
-.right {
-  background-color: red;
 }
 .wrong {
-  background-color: greenyellow;
+  color: var(--textColor);
+
+  background: rgba(212, 22, 22, 0.5);
+  /* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }

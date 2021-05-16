@@ -1,0 +1,19 @@
+:root {
+  --primaryColor: #1abc9c;
+
+  --secondaryColor: #ecf0f1;
+  --textColor: grey;
+}
+
+.score-card {
+  width: 700px;
+  height: 500px;
+  border: 2px solid gray;
+  border-radius: 10px;
+  color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--secondaryColor);
+}
