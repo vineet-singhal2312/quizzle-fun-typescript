@@ -23,12 +23,16 @@
   border-bottom-right-radius: 15%;
 
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   padding-top: 4rem;
-  /* align-items: center;
-  justify-content: center; */
+  align-items: center;
+  justify-content: center;
 }
 .header-heading {
   font-size: 2.5rem;
   color: var(--primaryColor);
+  /* justify-self: flex-start;
+   */
+
+  align-self: flex-start;
 }

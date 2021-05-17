@@ -1,0 +1,19 @@
+:root {
+  --primaryColor: #1abc9c;
+
+  --secondaryColor: #ecf0f1;
+  --therdColor: #34495e;
+  --textColor: grey;
+}
+
+.timer {
+  font-size: 1.2rem;
+  color: var(--therdColor);
+  text-transform: capitalize;
+  position: fixed;
+  bottom: 3%;
+  left: 1.5%;
+}
+.time {
+  color: black;
+}

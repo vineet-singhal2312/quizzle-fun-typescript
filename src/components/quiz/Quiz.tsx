@@ -9,6 +9,7 @@ import { intState, useQuiz } from "../providers/QuizContextProvider";
 import { ScoreCard } from "../scorecard/ScoreCard";
 import { useParams } from "react-router";
 import { Header } from "../header/Header";
+import { Timer } from "../timer/Timer";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -45,32 +46,67 @@ export function Quiz() {
 
   type Questions = question[];
 
-  useEffect(() => {
-    (async function () {
-      try {
-        const res = await axios.get<Questions>(`/${quizName}`);
-        // console.log(res);
+  // useEffect(() => {
+  //   (async function () {
+  //     try {
+  //       const res = await axios.get<Questions>(`/${quizName}`);
+  //       // console.log(res);
 
-        const data = res.data.map((qus) => ({
-          ...qus,
-          options: [qus.rightOption]
-            .concat(qus.wrongOption)
-            .sort(() => Math.random() - 0.5),
-        }));
-        dispatch({ type: "initialize-data", data: data });
-      } catch (error) {
-        console.log(error, "error");
-      }
-    })();
-  }, []);
+  //       const data = res.data.map((qus) => ({
+  //         ...qus,
+  //         options: [qus.rightOption]
+  //           .concat(qus.wrongOption)
+  //           .sort(() => Math.random() - 0.5),
+  //       }));
+  //       dispatch({ type: "initialize-data", data: data });
+  //     } catch (error) {
+  //       console.log(error, "error");
+  //     }
+  //   })();
+  // }, []);
+
+  const startQuiz = async () => {
+    try {
+      const res = await axios.get<Questions>(`/quiz/${quizName}`);
+      // console.log(res);
+
+      const data = res.data.map((qus) => ({
+        ...qus,
+        options: [qus.rightOption]
+          .concat(qus.wrongOption)
+          .sort(() => Math.random() - 0.5),
+      }));
+      dispatch({ type: "initialize-data", data: data });
+    } catch (error) {
+      console.log(error, "error");
+    }
+  };
 
   return (
     <div className="quiz">
-      <Header heading="LET'S PLAY" />
+      {state.startQuiz === false && (
+        <Header heading="READ THE INSTRUCTION BELOW!!" />
+      )}
+      {state.startQuiz && state.questionNum < 10 && <Timer />}
 
-      {/* <h1>SCORE : {state.score}</h1> */}
+      {state.startQuiz ? (
+        <Header heading=" LET'S PLAY" />
+      ) : (
+        <Button id="button" onClick={() => startQuiz()}>
+          Start
+        </Button>
+      )}
+
       <div className="question-card-div">
-        {state.questionNum < 10 ? <QuestionCard /> : <ScoreCard />}
+        {state.startQuiz ? (
+          state.questionNum < 10 ? (
+            <QuestionCard />
+          ) : (
+            <ScoreCard />
+          )
+        ) : (
+          <></>
+        )}
       </div>
 
       <div className="next-btn-div">
@@ -83,6 +119,7 @@ export function Quiz() {
               onClick={() => {
                 dispatch({
                   type: "increase-qus-number",
+                  payload: 1,
                 });
 
                 dispatch({

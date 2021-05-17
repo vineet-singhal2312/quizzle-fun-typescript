@@ -8,17 +8,17 @@ export const Quizzes = () => {
     <div className="quizzes">
       <Header heading="WELCOME TO THE QUIZZLE" />
 
-      <Link to="/quizzes/cliquiz" className="quiz-card">
-        <div></div>
+      <Link to="/quizzes/git-quiz" className="quiz-card link">
+        <h1 className="quiz-name-heading">Git quiz</h1>
       </Link>
-      <Link to="/quizzes/cliquiz" className="quiz-card">
-        <div></div>
+      <Link to="/quizzes/react-quiz" className="quiz-card link">
+        <h1 className="quiz-name-heading">React quiz</h1>
       </Link>
-      <Link to="/quizzes/cliquiz" className="quiz-card">
-        <div></div>
+      <Link to="/quizzes/node-quiz" className="quiz-card link">
+        <h1 className="quiz-name-heading">Node quiz</h1>
       </Link>
-      <Link to="/quizzes/cliquiz" className="quiz-card">
-        <div></div>
+      <Link to="/quizzes/cliquiz" className="quiz-card link">
+        <h1 className="quiz-name-heading">Git quiz</h1>
       </Link>
     </div>
   );

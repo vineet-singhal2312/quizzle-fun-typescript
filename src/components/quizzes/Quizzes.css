@@ -28,6 +28,10 @@
 .quiz-card {
   height: 400px;
   width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: rgba(26, 188, 156, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(0px);
@@ -35,4 +39,14 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   margin: 1rem 3rem;
+}
+.quiz-name-heading {
+  font-size: 2rem;
+  text-transform: capitalize;
+  letter-spacing: 0.2rem;
+  color: var(--therdColor);
+}
+.quiz-name-heading:hover {
+  transform: scale(1.2);
+  transition: all 0.5s;
 }

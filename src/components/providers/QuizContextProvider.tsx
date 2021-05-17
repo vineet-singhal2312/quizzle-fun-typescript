@@ -8,6 +8,7 @@ export type intState = {
   isNxtBtn: boolean;
   clickedRight: string;
   clickedWrong: string;
+  startQuiz: boolean;
 };
 
 const initialState: intState = {
@@ -17,6 +18,7 @@ const initialState: intState = {
   isNxtBtn: false,
   clickedRight: "",
   clickedWrong: "",
+  startQuiz: false,
 };
 
 type question = {
@@ -38,12 +40,14 @@ type ACTIONTYPE =
   | { type: "increment"; negativePoint: number; plusPoint: number }
   | { type: "decrement"; negativePoint: number; plusPoint: number }
   | { type: "initialize-data"; data: Questions }
-  | { type: "increase-qus-number" }
+  | { type: "increase-qus-number"; payload: number }
   | { type: "next-button"; payload: boolean }
   | { type: "clicked-right"; payload: string }
   | { type: "clicked-wrong"; payload: string };
 
 const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
+  console.log(state);
+
   switch (action.type) {
     case "increment":
       return { ...state, score: state.score + action.plusPoint };
@@ -52,12 +56,12 @@ const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
       return { ...state, score: state.score - action.negativePoint };
 
     case "initialize-data":
-      return { ...state, data: action.data };
+      return { ...state, data: action.data, startQuiz: true };
     case "next-button":
       return { ...state, isNxtBtn: action.payload };
 
     case "increase-qus-number":
-      return { ...state, questionNum: state.questionNum + 1 };
+      return { ...state, questionNum: state.questionNum + action.payload };
     case "clicked-right":
       return { ...state, clickedRight: action.payload };
 

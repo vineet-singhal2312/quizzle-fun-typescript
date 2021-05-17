@@ -37,7 +37,7 @@
 #button {
   background-color: var(--therdColor);
   width: 10rem;
-
+  letter-spacing: 2px;
   font-weight: 500;
   font-size: 1.1rem;
 }

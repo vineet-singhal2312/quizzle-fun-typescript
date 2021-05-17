@@ -10,6 +10,14 @@ type propType = {
   question: String;
   options: option[];
 };
+// export const changeQuestion = (dispatch: any) => {
+//   // const { state, dispatch } = useQuiz();
+
+//   dispatch({
+//     type: "increase-qus-number",
+//     payload: 1,
+//   });
+// };
 
 export const QuestionCard = () => {
   const { state, dispatch } = useQuiz();
