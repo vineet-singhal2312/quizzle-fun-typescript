@@ -1,4 +1,4 @@
-import { useQuiz } from "../providers/QuizContextProvider";
+import { useQuiz } from "../../context/QuizContextProvider";
 import "./QuestionCard.css";
 
 type option = {

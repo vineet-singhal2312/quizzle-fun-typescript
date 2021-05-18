@@ -3,14 +3,17 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-import { QuizContextProvider } from "./components/providers/QuizContextProvider";
+import { QuizContextProvider } from "./context/QuizContextProvider";
+import { ThemeProvider } from "./context/ThemeProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <QuizContextProvider>
-        <App />
-      </QuizContextProvider>
+      <ThemeProvider>
+        <QuizContextProvider>
+          <App />
+        </QuizContextProvider>
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById("root")

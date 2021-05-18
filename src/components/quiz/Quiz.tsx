@@ -5,11 +5,15 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { createStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { intState, useQuiz } from "../providers/QuizContextProvider";
+import { intState, useQuiz } from "../../context/QuizContextProvider";
 import { ScoreCard } from "../scorecard/ScoreCard";
 import { useParams } from "react-router";
 import { Header } from "../header/Header";
 import { Timer } from "../timer/Timer";
+
+import Fab from "@material-ui/core/Fab";
+import { Link } from "react-router-dom";
+import { Questions } from "./quizType";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,7 +25,6 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export function Quiz() {
   const { quizName } = useParams();
-  // console.log(quizName);
 
   const {
     state,
@@ -31,44 +34,9 @@ export function Quiz() {
     dispatch: any;
   } = useQuiz();
 
-  type question = {
-    quizName: string;
-
-    question: string;
-
-    plusPoint: number;
-    negativePoint: number;
-
-    rightOption?: string;
-    wrongOption?: string[];
-    options?: string[];
-  };
-
-  type Questions = question[];
-
-  // useEffect(() => {
-  //   (async function () {
-  //     try {
-  //       const res = await axios.get<Questions>(`/${quizName}`);
-  //       // console.log(res);
-
-  //       const data = res.data.map((qus) => ({
-  //         ...qus,
-  //         options: [qus.rightOption]
-  //           .concat(qus.wrongOption)
-  //           .sort(() => Math.random() - 0.5),
-  //       }));
-  //       dispatch({ type: "initialize-data", data: data });
-  //     } catch (error) {
-  //       console.log(error, "error");
-  //     }
-  //   })();
-  // }, []);
-
   const startQuiz = async () => {
     try {
       const res = await axios.get<Questions>(`/quiz/${quizName}`);
-      // console.log(res);
 
       const data = res.data.map((qus) => ({
         ...qus,
@@ -165,7 +133,41 @@ export function Quiz() {
               Done
             </Button>
           ))}
+
+        {state.startQuiz && !state.isNxtBtn && state.questionNum < 10 && (
+          <Button
+            id="button"
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              dispatch({
+                type: "increase-qus-number",
+                payload: 1,
+              });
+
+              dispatch({
+                type: "next-button",
+                payload: false,
+              });
+              dispatch({
+                type: "clicked-right",
+                payload: "",
+              });
+              dispatch({
+                type: "clicked-wrong",
+                payload: "",
+              });
+            }}
+          >
+            Pass
+          </Button>
+        )}
       </div>
+      <Link to="/quizzes" className="link">
+        <Fab color="secondary" id="home-button" aria-label="edit">
+          HOME
+        </Fab>
+      </Link>
     </div>
   );
 }

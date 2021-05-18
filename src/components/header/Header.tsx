@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useParams } from "react-router";
-import { intState, useQuiz } from "../providers/QuizContextProvider";
+import { intState, useQuiz } from "../../context/QuizContextProvider";
 import "./Header.css";
 import Button from "@material-ui/core/Button";
 

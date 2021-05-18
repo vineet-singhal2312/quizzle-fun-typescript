@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuiz } from "../providers/QuizContextProvider";
+import { useQuiz } from "../../context/QuizContextProvider";
 import "./ScoreCard.css";
 
 export const ScoreCard = () => {

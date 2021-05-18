@@ -46,7 +46,7 @@ type ACTIONTYPE =
   | { type: "clicked-wrong"; payload: string };
 
 const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
-  console.log(state);
+  // console.log(state);
 
   switch (action.type) {
     case "increment":

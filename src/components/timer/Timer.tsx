@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { setInterval } from "timers";
-import { useQuiz } from "../providers/QuizContextProvider";
+import { useQuiz } from "../../context/QuizContextProvider";
 import "./Timer.css";
 export const Timer = () => {
   const { state, dispatch } = useQuiz();
-  const [timer, setTimer] = useState<number>(5);
-
+  const [timer, setTimer] = useState<number>(30);
   useEffect(() => {
-    setTimer(() => 5);
+    console.log(state);
+
+    setTimer(30);
   }, [state.questionNum]);
 
   useEffect((): any => {
@@ -19,12 +20,15 @@ export const Timer = () => {
     };
   }, []);
 
-  if (timer === 0) {
-    dispatch({
-      type: "increase-qus-number",
-      payload: 1,
-    });
-  }
+  useEffect((): any => {
+    if (timer === 0) {
+      console.log("heree");
+      dispatch({
+        type: "increase-qus-number",
+        payload: 1,
+      });
+    }
+  }, [timer]);
 
   // if (timer < 0) {
   //   setTimer(5);

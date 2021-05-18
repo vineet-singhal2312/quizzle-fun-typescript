@@ -50,3 +50,15 @@
   transform: scale(1.2);
   transition: all 0.5s;
 }
+#home-button {
+  background-color: var(--therdColor);
+  color: var(--primaryColor);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+}
