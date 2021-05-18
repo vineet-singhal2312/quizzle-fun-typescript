@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Login from "./components/login/Login";
+import { Login } from "./components/login/Login";
 import { Routes, Route } from "react-router-dom";
 import { Quiz } from "./components/quiz/Quiz";
 import { Quizzes } from "./components/quizzes/Quizzes";

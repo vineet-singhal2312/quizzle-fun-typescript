@@ -2,13 +2,13 @@
   --primaryColor: #1abc9c;
 
   --secondaryColor: #ecf0f1;
-  --therdColor: #34495e;
+  --thirdColor: #34495e;
   --textColor: grey;
 }
 
 .timer {
   font-size: 1.2rem;
-  color: var(--therdColor);
+  color: var(--thirdColor);
   text-transform: capitalize;
   position: fixed;
   bottom: 3%;

@@ -14,6 +14,8 @@ import { Timer } from "../timer/Timer";
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import { Questions } from "./quizType";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import Instructions from "../instructions/Instructions";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -24,7 +26,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 export function Quiz() {
+  useEffect((): any => {
+    dispatch({ type: "initialize-quiz" });
+  }, []);
+
   const { quizName } = useParams();
+  const [isLoader, setIsLoader] = useState<boolean>(false);
 
   const {
     state,
@@ -34,17 +41,21 @@ export function Quiz() {
     dispatch: any;
   } = useQuiz();
 
-  const startQuiz = async () => {
+  const startQuiz = () => {
+    setIsLoader(true);
     try {
-      const res = await axios.get<Questions>(`/quiz/${quizName}`);
+      setTimeout(async () => {
+        const res = await axios.get<Questions>(`/quiz/${quizName}`);
 
-      const data = res.data.map((qus) => ({
-        ...qus,
-        options: [qus.rightOption]
-          .concat(qus.wrongOption)
-          .sort(() => Math.random() - 0.5),
-      }));
-      dispatch({ type: "initialize-data", data: data });
+        const data = res.data.map((qus) => ({
+          ...qus,
+          options: [qus.rightOption]
+            .concat(qus.wrongOption)
+            .sort(() => Math.random() - 0.5),
+        }));
+        dispatch({ type: "initialize-data", data: data });
+        setIsLoader(false);
+      }, 1000);
     } catch (error) {
       console.log(error, "error");
     }
@@ -66,16 +77,10 @@ export function Quiz() {
       )}
 
       <div className="question-card-div">
-        {state.startQuiz ? (
-          state.questionNum < 10 ? (
-            <QuestionCard />
-          ) : (
-            <ScoreCard />
-          )
-        ) : (
-          <></>
-        )}
+        {state.startQuiz &&
+          (state.questionNum < 10 ? <QuestionCard /> : <ScoreCard />)}
       </div>
+      {state.startQuiz === false && <Instructions />}
 
       <div className="next-btn-div">
         {state.isNxtBtn &&
@@ -163,6 +168,8 @@ export function Quiz() {
           </Button>
         )}
       </div>
+      {isLoader && <CircularProgress id="loader" />}
+
       <Link to="/quizzes" className="link">
         <Fab color="secondary" id="home-button" aria-label="edit">
           HOME

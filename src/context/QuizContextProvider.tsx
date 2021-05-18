@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from "react";
+import { Questions } from "../components/quiz/quizType";
 
 const QuizContext = createContext<any>(null);
 export type intState = {
@@ -21,22 +22,8 @@ const initialState: intState = {
   startQuiz: false,
 };
 
-type question = {
-  quizName: string;
-
-  question: string;
-
-  plusPoint: number;
-  negativePoint: number;
-
-  rightOption: string;
-  wrongOption: string[];
-  options: string[];
-};
-
-type Questions = question[];
-
 type ACTIONTYPE =
+  | { type: "initialize-quiz" }
   | { type: "increment"; negativePoint: number; plusPoint: number }
   | { type: "decrement"; negativePoint: number; plusPoint: number }
   | { type: "initialize-data"; data: Questions }
@@ -46,9 +33,17 @@ type ACTIONTYPE =
   | { type: "clicked-wrong"; payload: string };
 
 const reducer = (state: typeof initialState, action: ACTIONTYPE) => {
-  // console.log(state);
-
   switch (action.type) {
+    case "initialize-quiz":
+      return {
+        score: 0,
+        data: [],
+        questionNum: 0,
+        isNxtBtn: false,
+        clickedRight: "",
+        clickedWrong: "",
+        startQuiz: false,
+      };
     case "increment":
       return { ...state, score: state.score + action.plusPoint };
 

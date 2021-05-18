@@ -2,7 +2,7 @@
   --primaryColor: #1abc9c;
 
   --secondaryColor: #ecf0f1;
-  --therdColor: #34495e;
+  --thirdColor: #34495e;
   --textColor: grey;
 }
 #quiz-header {
@@ -35,9 +35,28 @@
   /* margin: 1rem; */
 }
 #button {
-  background-color: var(--therdColor);
+  background-color: var(--thirdColor);
   width: 10rem;
   letter-spacing: 2px;
   font-weight: 500;
   font-size: 1.1rem;
+}
+#home-button {
+  background-color: var(--thirdColor);
+  color: var(--primaryColor);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+}
+
+#loader {
+  color: var(--thirdColor);
+  position: fixed;
+  bottom: 3%;
+  left: 1.5%;
 }

@@ -1,0 +1,33 @@
+:root {
+  --primaryColor: #1abc9c;
+
+  --secondaryColor: #ecf0f1;
+  --thirdColor: #34495e;
+  --textColor: grey;
+}
+
+#instructions {
+  width: 60%;
+  text-align: initial;
+}
+#instruction-title {
+  font-size: 1.2rem;
+  background-color: var(--thirdColor);
+  color: var(--primaryColor);
+}
+#instruction {
+  /* height: 75px; */
+
+  font-size: 1.2rem;
+  background-color: var(--thirdColor);
+  color: var(--secondaryColor);
+}
+#instruction-list {
+  /* height: 75px; */
+  font-weight: 300;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  background-color: var(--thirdColor);
+  color: var(--secondaryColor);
+  word-spacing: 3px;
+}

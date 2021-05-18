@@ -2,7 +2,7 @@
   --primaryColor: #1abc9c;
 
   --secondaryColor: #ecf0f1;
-  --therdColor: #34495e;
+  --thirdColor: #34495e;
   --textColor: grey;
 }
 
@@ -18,10 +18,10 @@
   /* padding: 3rem; */
   padding-top: 5rem;
   background-color: var(--secondaryColor);
-  background: rgba(26, 188, 156, 0.25);
+  background: rgba(26, 188, 156, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
@@ -39,26 +39,19 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   margin: 1rem 3rem;
+
+  background: rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
 }
 .quiz-name-heading {
   font-size: 2rem;
   text-transform: capitalize;
   letter-spacing: 0.2rem;
-  color: var(--therdColor);
+  color: var(--secondaryColor);
 }
 .quiz-name-heading:hover {
   transform: scale(1.2);
   transition: all 0.5s;
-}
-#home-button {
-  background-color: var(--therdColor);
-  color: var(--primaryColor);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  width: 75px;
-  height: 75px;
-  position: fixed;
-  bottom: 3%;
-  right: 2%;
 }

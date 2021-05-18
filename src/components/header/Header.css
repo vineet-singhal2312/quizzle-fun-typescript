@@ -2,7 +2,7 @@
   --primaryColor: #1abc9c;
 
   --secondaryColor: #ecf0f1;
-  --therdColor: #34495e;
+  --thirdColor: #34495e;
   --textColor: grey;
 }
 
@@ -11,7 +11,7 @@
   top: 0%;
   width: 100%;
   height: 300px;
-  /* background-color: var(--therdColor); */
+  /* background-color: var(--thirdColor); */
 
   background: rgba(52, 73, 94, 0.8);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
