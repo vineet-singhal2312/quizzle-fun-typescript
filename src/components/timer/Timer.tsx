@@ -4,26 +4,13 @@ import { useQuiz } from "../providers/QuizContextProvider";
 import "./Timer.css";
 export const Timer = () => {
   const { state, dispatch } = useQuiz();
-  const [timer, setTimer] = useState<number>(3);
+  const [timer, setTimer] = useState<number>(5);
 
-  async function aa() {
-    if (timer === 0) {
-      await dispatch({
-        type: "increase-qus-number",
-        payload: 1,
-      });
-      // await setTimer(3);
-    }
-  }
-
-  aa();
+  useEffect(() => {
+    setTimer(() => 5);
+  }, [state.questionNum]);
 
   useEffect((): any => {
-    // const clearInterval = setInterval(() => {
-    //   setTimer((time) => time - 1);
-    // }, 1000);
-    // return clearInterval;
-
     let myInterval = setInterval(() => {
       setTimer((time) => time - 1);
     }, 1000);
@@ -32,13 +19,16 @@ export const Timer = () => {
     };
   }, []);
 
-  useEffect(() => {
-    setTimer(() => 3);
-  }, [state.questionNum]);
-
-  if (timer < 0) {
-    setTimer(5);
+  if (timer === 0) {
+    dispatch({
+      type: "increase-qus-number",
+      payload: 1,
+    });
   }
+
+  // if (timer < 0) {
+  //   setTimer(5);
+  // }
 
   return (
     <div className="timer">
