@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { setInterval } from "timers";
-import { useQuiz } from "../../context/QuizContextProvider";
+import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 import "./Timer.css";
 export const Timer = () => {
   const { state, dispatch } = useQuiz();
@@ -22,17 +22,12 @@ export const Timer = () => {
 
   useEffect((): any => {
     if (timer === 0) {
-      console.log("heree");
       dispatch({
         type: "increase-qus-number",
         payload: 1,
       });
     }
   }, [timer]);
-
-  // if (timer < 0) {
-  //   setTimer(5);
-  // }
 
   return (
     <div className="timer">

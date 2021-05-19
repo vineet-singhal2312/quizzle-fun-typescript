@@ -1,23 +1,5 @@
-import { useQuiz } from "../../context/QuizContextProvider";
+import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 import "./QuestionCard.css";
-
-type option = {
-  option: String;
-  isRight: Boolean;
-};
-
-type propType = {
-  question: String;
-  options: option[];
-};
-// export const changeQuestion = (dispatch: any) => {
-//   // const { state, dispatch } = useQuiz();
-
-//   dispatch({
-//     type: "increase-qus-number",
-//     payload: 1,
-//   });
-// };
 
 export const QuestionCard = () => {
   const { state, dispatch } = useQuiz();
@@ -32,7 +14,6 @@ export const QuestionCard = () => {
     plusPoint: number;
   }) {
     if (option === state.data[state.questionNum]?.rightOption) {
-      // console.log("yeahhh");
       dispatch({ type: "increment", negativePoint, plusPoint });
     } else {
       dispatch({ type: "decrement", negativePoint, plusPoint });
@@ -42,8 +23,6 @@ export const QuestionCard = () => {
       payload: true,
     });
   }
-  // console.log(state.data[state.questionNum]?.question);
-  // console.log(state.data[state.questionNum]?.options);
 
   return (
     <div className="question-card">
@@ -51,8 +30,6 @@ export const QuestionCard = () => {
 
       <ol className="options">
         {state.data[state.questionNum]?.options.map((option: any) => {
-          // console.log(option);
-
           return (
             <li
               key={option}

@@ -5,7 +5,7 @@ import { makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { createStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import { intState, useQuiz } from "../../context/QuizContextProvider";
+import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 import { ScoreCard } from "../scorecard/ScoreCard";
 import { useParams } from "react-router";
 import { Header } from "../header/Header";
@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import { Questions } from "./quizType";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Instructions from "../instructions/Instructions";
+import { IntState } from "../../context/quizprovider/QuizReducer.type";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +38,7 @@ export function Quiz() {
     state,
     dispatch,
   }: {
-    state: intState;
+    state: IntState;
     dispatch: any;
   } = useQuiz();
 
@@ -69,7 +70,11 @@ export function Quiz() {
       {state.startQuiz && state.questionNum < 10 && <Timer />}
 
       {state.startQuiz ? (
-        <Header heading=" LET'S PLAY" />
+        state.questionNum < 10 ? (
+          <Header heading={`${state.userName}!! LET'S PLAY`} />
+        ) : (
+          <Header heading="GAME OVER" />
+        )
       ) : (
         <Button id="button" onClick={() => startQuiz()}>
           Start
