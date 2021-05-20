@@ -1,5 +1,5 @@
 import "./Quizzes.css";
-import { Header } from "../header/Header";
+import { Header } from "../../components/header/Header";
 import { Link } from "react-router-dom";
 import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 

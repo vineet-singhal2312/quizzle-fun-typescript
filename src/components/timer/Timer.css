@@ -1,11 +1,3 @@
-:root {
-  --primaryColor: #1abc9c;
-
-  --secondaryColor: #ecf0f1;
-  --thirdColor: #34495e;
-  --textColor: grey;
-}
-
 .timer {
   font-size: 1.2rem;
   color: var(--thirdColor);

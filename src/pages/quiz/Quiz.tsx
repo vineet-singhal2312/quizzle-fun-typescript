@@ -1,30 +1,20 @@
 import "./Quiz.css";
-import { QuestionCard } from "../questioncard/QuestionCard";
+import { QuestionCard } from "../../components/questioncard/QuestionCard";
 import { useEffect, useState } from "react";
-import { makeStyles, Theme } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { createStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
-import { ScoreCard } from "../scorecard/ScoreCard";
+import { ScoreCard } from "../../components/scorecard/ScoreCard";
 import { useParams } from "react-router";
-import { Header } from "../header/Header";
-import { Timer } from "../timer/Timer";
+import { Header } from "../../components/header/Header";
+import { Timer } from "../../components/timer/Timer";
 
 import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import { Questions } from "./quizType";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Instructions from "../instructions/Instructions";
+import Instructions from "../../components/instructions/Instructions";
 import { IntState } from "../../context/quizprovider/QuizReducer.type";
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    button: {
-      margin: theme.spacing(1),
-    },
-  })
-);
 
 export function Quiz() {
   useEffect((): any => {

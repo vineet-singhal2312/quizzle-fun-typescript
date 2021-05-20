@@ -7,9 +7,11 @@
   box-sizing: border-box;
 }
 :root {
-  --primaryColor: #487eb0;
+  --primaryColor: #1abc9c;
 
-  --secondaryColor: #1e282f;
+  --secondaryColor: #ecf0f1;
+  --thirdColor: #34495e;
+
   --textColor: grey;
 }
 

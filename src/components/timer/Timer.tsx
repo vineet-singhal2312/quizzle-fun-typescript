@@ -6,8 +6,6 @@ export const Timer = () => {
   const { state, dispatch } = useQuiz();
   const [timer, setTimer] = useState<number>(30);
   useEffect(() => {
-    console.log(state);
-
     setTimer(30);
   }, [state.questionNum]);
 

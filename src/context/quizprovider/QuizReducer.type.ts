@@ -1,4 +1,4 @@
-import { Questions } from "../../components/quiz/quizType";
+import { Questions } from "../../pages/quiz/quizType";
 
 export type ACTIONTYPE =
   | { type: "initialize-user-name"; payload: string }
