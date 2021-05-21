@@ -1,28 +1,9 @@
 import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 import "./QuestionCard.css";
+import { AnswerHandler } from "./QuestionCard.utils";
 
 export const QuestionCard = () => {
   const { state, dispatch } = useQuiz();
-
-  function answerHandler({
-    option,
-    negativePoint,
-    plusPoint,
-  }: {
-    option: string | undefined;
-    negativePoint: number;
-    plusPoint: number;
-  }) {
-    if (option === state.data[state.questionNum]?.rightOption) {
-      dispatch({ type: "increment", negativePoint, plusPoint });
-    } else {
-      dispatch({ type: "decrement", negativePoint, plusPoint });
-    }
-    dispatch({
-      type: "next-button",
-      payload: true,
-    });
-  }
 
   return (
     <div className="question-card">
@@ -39,10 +20,12 @@ export const QuestionCard = () => {
                   : `option ${state.clickedWrong}`
               }
               onClick={() => {
-                answerHandler({
+                AnswerHandler({
                   option: option,
                   plusPoint: state.data[state.questionNum]?.plusPoint,
                   negativePoint: state.data[state.questionNum]?.negativePoint,
+                  state,
+                  dispatch,
                 });
 
                 dispatch({

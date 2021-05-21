@@ -5,6 +5,15 @@ export const takeUserName = (
   setUserInput(e.target.value);
 };
 
-export const submitNameHandler = (dispatch: any, userInput: string) => {
-  dispatch({ type: "initialize-user-name", payload: userInput });
+export const submitNameHandler = (
+  dispatch: any,
+  userInput: string,
+  navigate: any
+) => {
+  if (userInput) {
+    dispatch({ type: "initialize-user-name", payload: userInput });
+    navigate("/quizzes");
+  } else {
+    alert("Enter your name!!");
+  }
 };

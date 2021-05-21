@@ -18,9 +18,6 @@ export const Quizzes = () => {
       <Link to="/quizzes/node-quiz" className="quiz-card link">
         <h1 className="quiz-name-heading">Node quiz</h1>
       </Link>
-      <Link to="/quizzes/cliquiz" className="quiz-card link">
-        <h1 className="quiz-name-heading">Git quiz</h1>
-      </Link>
     </div>
   );
 };

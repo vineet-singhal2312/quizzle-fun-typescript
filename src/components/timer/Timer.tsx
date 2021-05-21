@@ -4,9 +4,9 @@ import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
 import "./Timer.css";
 export const Timer = () => {
   const { state, dispatch } = useQuiz();
-  const [timer, setTimer] = useState<number>(30);
+  const [timer, setTimer] = useState<number>(10);
   useEffect(() => {
-    setTimer(30);
+    setTimer(10);
   }, [state.questionNum]);
 
   useEffect((): any => {

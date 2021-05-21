@@ -1,6 +1,6 @@
-import { Questions } from "../../pages/quiz/quizType";
+import { Questions } from "../../pages/quiz/QuizType";
 
-export type ACTIONTYPE =
+export type QUIZ_ACTION =
   | { type: "initialize-user-name"; payload: string }
   | { type: "initialize-quiz" }
   | { type: "increment"; negativePoint: number; plusPoint: number }
@@ -9,9 +9,15 @@ export type ACTIONTYPE =
   | { type: "increase-qus-number"; payload: number }
   | { type: "next-button"; payload: boolean }
   | { type: "clicked-right"; payload: string }
-  | { type: "clicked-wrong"; payload: string };
+  | { type: "clicked-wrong"; payload: string }
+  | {
+      type: "next-question";
+      payload1: boolean;
+      payload2: string;
+      payload3: number;
+    };
 
-export type IntState = {
+export type INITIAL_STATE = {
   score: number;
   data: any;
   questionNum: number;
