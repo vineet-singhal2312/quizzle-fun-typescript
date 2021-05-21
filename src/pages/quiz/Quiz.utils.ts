@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Questions } from "./QuizType";
+import { Questions } from "./quizType";
 
 export const StartQuiz = ({
   setIsLoader,
