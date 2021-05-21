@@ -1,0 +1,24 @@
+#instructions {
+  width: 60%;
+  text-align: initial;
+}
+#instruction-title {
+  font-size: 1.2rem;
+  background-color: var(--thirdColor);
+  color: var(--primaryColor);
+}
+#instruction {
+  font-size: 1rem;
+  background-color: var(--thirdColor);
+  color: var(--secondaryColor);
+  letter-spacing: 1px;
+}
+#instruction-list {
+  font-weight: 300;
+  padding-left: 1rem;
+  font-size: 1rem;
+  background-color: var(--thirdColor);
+  color: var(--secondaryColor);
+  word-spacing: 3px;
+  letter-spacing: 1px;
+}
