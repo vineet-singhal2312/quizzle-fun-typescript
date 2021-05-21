@@ -6,7 +6,6 @@ export type QUIZ_ACTION =
   | { type: "increment"; negativePoint: number; plusPoint: number }
   | { type: "decrement"; negativePoint: number; plusPoint: number }
   | { type: "initialize-data"; data: Questions }
-  | { type: "increase-qus-number"; payload: number }
   | { type: "next-button"; payload: boolean }
   | { type: "clicked-right"; payload: string }
   | { type: "clicked-wrong"; payload: string }

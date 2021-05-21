@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-import { QuizContextProvider } from "./context/quizprovider/QuizContextProvider";
+import { QuizContextProvider } from "./context/quiz-provider/QuizContextProvider";
 
 ReactDOM.render(
   <React.StrictMode>

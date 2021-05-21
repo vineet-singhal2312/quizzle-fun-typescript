@@ -1,7 +1,7 @@
 import "./Quizzes.css";
 import { Header } from "../../components/header/Header";
 import { Link } from "react-router-dom";
-import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
+import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 
 export const Quizzes = () => {
   const { state } = useQuiz();

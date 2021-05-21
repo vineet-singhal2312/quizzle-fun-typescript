@@ -2,7 +2,7 @@ import "./Quiz.css";
 import { QuestionCard } from "../../components/questioncard/QuestionCard";
 import { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
-import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
+import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import { ScoreCard } from "../../components/scorecard/ScoreCard";
 import { useParams } from "react-router";
 import { Header } from "../../components/header/Header";
@@ -12,7 +12,7 @@ import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Instructions from "../../components/instructions/Instructions";
-import { INITIAL_STATE } from "../../context/quizprovider/QuizReducer.type";
+import { INITIAL_STATE } from "../../context/quiz-provider/QuizReducer.type";
 import { StartQuiz } from "./Quiz.utils";
 
 export function Quiz() {

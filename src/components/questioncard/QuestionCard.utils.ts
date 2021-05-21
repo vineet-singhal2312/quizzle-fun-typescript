@@ -1,4 +1,4 @@
-import { INITIAL_STATE } from "../../context/quizprovider/QuizReducer.type";
+import { INITIAL_STATE } from "../../context/quiz-provider/QuizReducer.type";
 
 export function AnswerHandler({
   option,

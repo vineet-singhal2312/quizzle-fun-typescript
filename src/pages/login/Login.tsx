@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
+import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./Login.css";
 import { submitNameHandler, takeUserName } from "./Login.utils";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const [userInput, setUserInput] = useState("");

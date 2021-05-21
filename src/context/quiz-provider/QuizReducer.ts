@@ -40,11 +40,7 @@ export const QuizReducer = (
     case "next-button":
       return { ...state, isNxtBtn: action.payload };
 
-    case "increase-qus-number":
-      return {
-        ...state,
-        questionNum: state.questionNum + action.payload,
-      };
+ 
     case "clicked-right":
       return { ...state, clickedRight: action.payload };
 
