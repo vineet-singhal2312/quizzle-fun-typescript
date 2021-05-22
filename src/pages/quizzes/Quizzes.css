@@ -16,8 +16,8 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .quiz-card {
-  height: 400px;
-  width: 300px;
+  height: 370px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,11 +1,3 @@
-/* :root {
-  --primaryColor: #1abc9c;
-
-  --secondaryColor: #ecf0f1;
-  --thirdColor: #34495e;
-  --textColor: grey;
-} */
-
 .login {
   width: 100%;
   min-height: 100vh;
@@ -82,6 +74,7 @@ body {
 .submit-button {
   background-color: transparent;
   border: transparent;
+  cursor: pointer;
 }
 
 #submit-button {
