@@ -34,7 +34,7 @@ export function Quiz() {
   return (
     <div className="quiz">
       {state.startQuiz === false && (
-        <Header heading="READ THE INSTRUCTION BELOW!!" />
+        <Header heading="READ THE INSTRUCTIONS BELOW!!" />
       )}
       {state.startQuiz && state.questionNum < 10 && <Timer />}
 
