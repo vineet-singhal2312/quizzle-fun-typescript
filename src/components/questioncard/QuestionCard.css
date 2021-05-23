@@ -59,3 +59,14 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+@media only screen and (max-width: 500px) {
+  .question-card {
+    width: 325px;
+    height: 425px;
+    font-size: 0.9rem;
+  }
+  .options {
+    width: 95%;
+    margin-left: 0rem;
+  }
+}

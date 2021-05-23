@@ -45,3 +45,14 @@
   transform: scale(1.2);
   transition: all 0.5s;
 }
+@media only screen and (max-width: 500px) {
+  .quizzes {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6rem;
+  }
+  .quiz-card {
+    height: 100px;
+    margin: 2rem 0rem;
+  }
+}

@@ -27,3 +27,12 @@
   letter-spacing: 1px;
   word-spacing: 1px;
 }
+@media only screen and (max-width: 500px) {
+  .header {
+    height: 160px;
+    padding-top: 1rem;
+  }
+  .header-heading {
+    font-size: 1.5rem;
+  }
+}

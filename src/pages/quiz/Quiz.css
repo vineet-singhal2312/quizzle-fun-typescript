@@ -52,3 +52,22 @@
   bottom: 3%;
   left: 1.5%;
 }
+
+@media only screen and (max-width: 500px) {
+  .quiz {
+    padding: 0rem;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+  }
+  #home-button {
+    font-size: 0.8rem;
+    width: 55px;
+    height: 55px;
+  }
+  #loader {
+    color: var(--thirdColor);
+    position: fixed;
+    bottom: 2%;
+    left: 3.5%;
+  }
+}
