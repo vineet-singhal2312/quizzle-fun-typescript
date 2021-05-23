@@ -3,7 +3,7 @@ import { InitialState, QuizReducer } from "./QuizReducer";
 
 const QuizContext = createContext<any>(null);
 
-export const QuizContextProvider = ({ children }: { children: any }) => {
+export const QuizContextProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(QuizReducer, InitialState);
   return (
     <QuizContext.Provider value={{ state, dispatch }}>

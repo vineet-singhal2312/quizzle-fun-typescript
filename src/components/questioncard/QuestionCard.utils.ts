@@ -7,7 +7,7 @@ export function AnswerHandler({
   state,
   dispatch,
 }: {
-  option: string | undefined;
+  option: string;
   negativePoint: number;
   plusPoint: number;
   state: INITIAL_STATE;

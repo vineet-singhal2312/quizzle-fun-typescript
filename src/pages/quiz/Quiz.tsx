@@ -12,7 +12,10 @@ import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Instructions from "../../components/instructions/Instructions";
-import { INITIAL_STATE } from "../../context/quiz-provider/QuizReducer.type";
+import {
+  INITIAL_STATE,
+  QUIZ_ACTION,
+} from "../../context/quiz-provider/QuizReducer.type";
 import { StartQuiz } from "./Quiz.utils";
 
 export function Quiz() {
@@ -23,13 +26,7 @@ export function Quiz() {
   const { quizName } = useParams();
   const [isLoader, setIsLoader] = useState<boolean>(false);
 
-  const {
-    state,
-    dispatch,
-  }: {
-    state: INITIAL_STATE;
-    dispatch: any;
-  } = useQuiz();
+  const { state, dispatch } = useQuiz();
 
   return (
     <div className="quiz">
