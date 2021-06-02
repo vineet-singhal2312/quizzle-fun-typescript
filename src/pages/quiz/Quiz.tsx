@@ -17,6 +17,7 @@ import {
   QUIZ_ACTION,
 } from "../../context/quiz-provider/QuizReducer.type";
 import { StartQuiz } from "./Quiz.utils";
+import { useAuth } from "../../context/auth-provider/authContextProvider";
 
 export function Quiz() {
   useEffect((): any => {
@@ -27,6 +28,7 @@ export function Quiz() {
   const [isLoader, setIsLoader] = useState<boolean>(false);
 
   const { state, dispatch } = useQuiz();
+  const { token } = useAuth();
 
   return (
     <div className="quiz">
@@ -49,6 +51,7 @@ export function Quiz() {
               setIsLoader,
               quizName,
               dispatch,
+              token,
             })
           }
         >
