@@ -19,8 +19,8 @@ export const StartQuiz = ({
   try {
     setTimeout(async () => {
       const res = await axios.get<Questions>(
-        // `https://quizzle-typescript.herokuapp.com/quiz/${quizName}` ,
-        `http://localhost:8000/quiz/${quizName}`,
+        `https://quizzle-typescript.herokuapp.com/quiz/${quizName}`,
+        // `http://localhost:8000/quiz/${quizName}`,
 
         { headers: { authorization: token } }
       );

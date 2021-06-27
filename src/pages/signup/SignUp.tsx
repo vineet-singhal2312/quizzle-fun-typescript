@@ -20,8 +20,8 @@ export const SignUp = () => {
     e.preventDefault();
     try {
       await axios.post(
-        "http://localhost:8000/signup",
-        // `https://cook-es-watch.herokuapp.com/signup`,
+        // "http://localhost:8000/signup",
+        `https://cook-es-watch.herokuapp.com/signup`,
 
         {
           userName,

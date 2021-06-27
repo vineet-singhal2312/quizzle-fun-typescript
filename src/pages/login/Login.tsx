@@ -27,8 +27,8 @@ export const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8000/login",
-        // `https://cook-es-watch.herokuapp.com/login`,
+        // "http://localhost:8000/login",
+        `https://cook-es-watch.herokuapp.com/login`,
 
         {
           email,
@@ -95,7 +95,7 @@ export const Login = () => {
           </div>
           <p className="switch-page-description">
             create an account{" "}
-            <Link to="/signup" className="switch-page-link">
+            <Link to="/sign-up" className="switch-page-link">
               Sign Up
             </Link>
           </p>
