@@ -12,23 +12,19 @@ import Fab from "@material-ui/core/Fab";
 import { Link } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Instructions from "../../components/instructions/Instructions";
-import {
-  INITIAL_STATE,
-  QUIZ_ACTION,
-} from "../../context/quiz-provider/QuizReducer.type";
+
 import { StartQuiz } from "./Quiz.utils";
 import { useAuth } from "../../context/auth-provider/authContextProvider";
 
 export function Quiz() {
-  useEffect((): any => {
-    dispatch({ type: "initialize-quiz" });
-  }, []);
-
   const { quizName } = useParams();
   const [isLoader, setIsLoader] = useState<boolean>(false);
 
   const { state, dispatch } = useQuiz();
   const { token } = useAuth();
+  useEffect((): any => {
+    dispatch({ type: "initialize-quiz" });
+  }, [dispatch]);
 
   return (
     <div className="quiz">

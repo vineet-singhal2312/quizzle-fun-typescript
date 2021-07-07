@@ -1,15 +1,11 @@
 import { useState } from "react";
-import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./Login.css";
-import { submitNameHandler, takeUserName } from "./Login.utils";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAuth } from "../../context/auth-provider/authContextProvider";
 import { Data } from "../signup/signupType";
 
 export const Login = () => {
-  // const [userInput, setUserInput] = useState("");
-  // const { dispatch } = useQuiz();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -28,7 +24,7 @@ export const Login = () => {
     try {
       const res = await axios.post(
         // "http://localhost:8000/login",
-        `https://cook-es-watch.herokuapp.com/login`,
+        `https://quizzle-typescript.herokuapp.com/login`,
 
         {
           email,
@@ -79,7 +75,6 @@ export const Login = () => {
             <input
               type="email"
               name=""
-              // onChange={(e) => takeUserName(e, setUserInput)}
               onChange={(e) => setEmail(e.target.value)}
             />
             <label>Email</label>
@@ -88,7 +83,6 @@ export const Login = () => {
             <input
               type="password"
               name=""
-              // onChange={(e) => takeUserName(e, setUserInput)}
               onChange={(e) => setPassword(e.target.value)}
             />
             <label>password</label>
@@ -104,7 +98,6 @@ export const Login = () => {
               className="submit-button"
               disabled={false}
               id="submit-button"
-              // onClick={() => submitNameHandler(dispatch, userInput, navigate)}
               onClick={(e) => Logout()}
             >
               <span></span>
@@ -118,7 +111,6 @@ export const Login = () => {
               className="submit-button"
               disabled={false}
               id="submit-button"
-              // onClick={() => submitNameHandler(dispatch, userInput, navigate)}
               onClick={(e) => LogInHandler(e)}
             >
               <span></span>

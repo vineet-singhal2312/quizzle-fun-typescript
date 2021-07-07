@@ -1,6 +1,4 @@
 import axios from "axios";
-import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
-import { QUIZ_ACTION } from "../../context/quiz-provider/QuizReducer.type";
 import { Questions } from "./quizType";
 
 export const StartQuiz = ({

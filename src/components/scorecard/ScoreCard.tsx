@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./ScoreCard.css";
 

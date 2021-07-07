@@ -1,12 +1,10 @@
 import "./Quizzes.css";
 import { Header } from "../../components/header/Header";
 import { Link, useNavigate } from "react-router-dom";
-import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import { useAuth } from "../../context/auth-provider/authContextProvider";
 import Fab from "@material-ui/core/Fab";
 
 export const Quizzes = () => {
-  const { state } = useQuiz();
   const { userName } = useAuth();
   const navigate = useNavigate();
   const { setLogin, setToken } = useAuth();

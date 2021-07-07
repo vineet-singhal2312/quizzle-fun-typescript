@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { setInterval } from "timers";
 import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./Timer.css";
@@ -27,7 +27,7 @@ export const Timer = () => {
         payload3: 1,
       });
     }
-  }, [timer]);
+  }, [timer, dispatch]);
 
   return (
     <div className="timer">

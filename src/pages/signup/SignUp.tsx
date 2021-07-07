@@ -1,15 +1,9 @@
 import { useState } from "react";
-import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./SignUp.css";
-// import { submitNameHandler, takeUserName } from "./Login.utils";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const SignUp = () => {
-  //   const [userInput, setUserInput] = useState("");
-  //   const { dispatch } = useQuiz();
-  //   const navigate = useNavigate();
-
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password1, setPassword1] = useState("");
@@ -21,7 +15,7 @@ export const SignUp = () => {
     try {
       await axios.post(
         // "http://localhost:8000/signup",
-        `https://cook-es-watch.herokuapp.com/signup`,
+        `https://quizzle-typescript.herokuapp.com/signup`,
 
         {
           userName,
@@ -37,7 +31,6 @@ export const SignUp = () => {
       setPassword2("");
       navigate("/");
     } catch (error) {
-      console.log(error.message);
       console.log(error.data);
     }
   };
