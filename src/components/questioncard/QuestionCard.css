@@ -1,6 +1,6 @@
 .question-card {
-  width: 700px;
-  height: 500px;
+  width: 690px;
+  height: 440px;
   border: 2px solid gray;
   border-radius: 10px;
   color: gray;
@@ -58,4 +58,15 @@
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
+}
+@media only screen and (max-width: 500px) {
+  .question-card {
+    width: 325px;
+    height: 425px;
+    font-size: 0.9rem;
+  }
+  .options {
+    width: 95%;
+    margin-left: 0rem;
+  }
 }

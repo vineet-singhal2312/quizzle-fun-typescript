@@ -22,3 +22,9 @@
   word-spacing: 3px;
   letter-spacing: 1px;
 }
+
+@media only screen and (max-width: 500px) {
+  #instructions {
+    width: 95%;
+  }
+}

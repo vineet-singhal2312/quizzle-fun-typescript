@@ -16,8 +16,8 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
 .quiz-card {
-  height: 400px;
-  width: 300px;
+  height: 370px;
+  width: 280px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -44,4 +44,33 @@
 .quiz-name-heading:hover {
   transform: scale(1.2);
   transition: all 0.5s;
+}
+#logout-button {
+  background-color: var(--thirdColor);
+  color: var(--primaryColor);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  width: 75px;
+  height: 75px;
+  position: fixed;
+  bottom: 3%;
+  right: 2%;
+}
+
+@media only screen and (max-width: 500px) {
+  .quizzes {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 6rem;
+  }
+  #logout-button {
+    font-size: 0.8rem;
+    width: 55px;
+    height: 55px;
+  }
+  .quiz-card {
+    height: 100px;
+    margin: 2rem 0rem;
+  }
 }

@@ -11,3 +11,10 @@
   background-color: var(--secondaryColor);
   z-index: 1;
 }
+@media only screen and (max-width: 500px) {
+  .score-card {
+    width: 325px;
+    height: 400px;
+    font-size: 0.9rem;
+  }
+}

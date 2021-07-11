@@ -1,4 +1,4 @@
-import { useQuiz } from "../../context/quizprovider/QuizContextProvider";
+import { useQuiz } from "../../context/quiz-provider/QuizContextProvider";
 import "./QuestionCard.css";
 import { AnswerHandler } from "./QuestionCard.utils";
 

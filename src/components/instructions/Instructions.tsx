@@ -11,11 +11,10 @@ export default function Instructions() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
-
   const handleChange =
-  (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
-    setExpanded(isExpanded ? panel : false);
-  };
+    (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
 
   return (
     <div id="instructions">
@@ -71,7 +70,7 @@ export default function Instructions() {
             <ul>
               <li>
                 {" "}
-                You have 30 second for each question, Next question will be
+                You have 10 second for each question, Next question will be
                 appear automatically after 30 second.
               </li>
             </ul>
