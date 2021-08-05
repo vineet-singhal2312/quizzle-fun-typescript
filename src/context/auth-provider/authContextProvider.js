@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
   const [loginFailedModel, setLoginFailedModel] = useState(false);
   const [loginStatus, setLoginStatus] = useState(false);
 
-  console.log(isUserLogin, token, userName);
+  // console.log({ isUserLogin, token, userName });
 
   return (
     <AuthContext.Provider

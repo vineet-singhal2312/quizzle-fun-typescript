@@ -71,13 +71,13 @@ body {
   color: var(--highlighter);
   font-size: 12px;
 }
-.submit-button {
+.submit-button-login {
   background-color: transparent;
   border: transparent;
   cursor: pointer;
 }
 
-#submit-button {
+#submit-button-login {
   position: relative;
   display: inline-block;
   padding: 10px 20px;
@@ -88,16 +88,18 @@ body {
   overflow: hidden;
   transition: 0.5s;
   margin-top: 40px;
+  margin: 1rem 0.5rem;
   letter-spacing: 4px;
+  border: 1px solid var(--highlighter);
 }
 
-#submit-button:hover {
+#submit-button-login:hover {
   background: var(--highlighter);
   color: black;
   border-radius: 5px;
 }
 
-#submit-button span {
+#submit-button-login span {
   position: absolute;
   display: block;
 }
@@ -107,7 +109,11 @@ body {
 .switch-page-link {
   color: var(--highlighter);
 }
-#submit-button span:nth-child(1) {
+.login-fail {
+  color: red;
+  font-size: 1rem;
+}
+/* #submit-button-login span:nth-child(1) {
   top: 0;
   left: -100%;
   width: 100%;
@@ -124,9 +130,9 @@ body {
   100% {
     left: 100%;
   }
-}
+} */
 
-#submit-button span:nth-child(2) {
+/* #submit-button-login span:nth-child(2) {
   top: -100%;
   right: 0;
   width: 2px;
@@ -146,7 +152,7 @@ body {
   }
 }
 
-#submit-button span:nth-child(3) {
+#submit-button-login span:nth-child(3) {
   bottom: 0;
   right: -100%;
   width: 100%;
@@ -166,7 +172,7 @@ body {
   }
 }
 
-#submit-button span:nth-child(4) {
+#submit-button-login span:nth-child(4) {
   bottom: -100%;
   left: 0;
   width: 2px;
@@ -184,7 +190,7 @@ body {
   100% {
     bottom: 100%;
   }
-}
+} */
 
 @media only screen and (max-width: 500px) {
   .login-box {
