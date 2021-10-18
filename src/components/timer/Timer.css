@@ -1,0 +1,17 @@
+.timer {
+  font-size: 1.2rem;
+  color: var(--thirdColor);
+  text-transform: capitalize;
+  position: fixed;
+  bottom: 3%;
+  left: 1.5%;
+}
+.time {
+  color: black;
+}
+@media only screen and (max-width: 500px) {
+  .timer {
+    font-size: 1rem;
+    bottom: 1%;
+  }
+}
